@@ -98,4 +98,60 @@ public class Stopwatch implements IStopwatch {
     }
   }
 
+
+  
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
+    result = prime * result + ((laps == null) ? 0 : laps.hashCode());
+    return result;
+  }
+
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Stopwatch other = (Stopwatch) obj;
+    if (id == null) {
+      if (other.id != null)
+        return false;
+    } else if (!id.equals(other.id))
+      return false;
+    if (laps == null) {
+      if (other.laps != null)
+        return false;
+    } else if (!laps.equals(other.laps))
+      return false;
+    return true;
+  }
+
+  /* (non-Javadoc)
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    StringBuilder lapStrBuilder = new StringBuilder();
+    lapStrBuilder.append("[");
+    List<Long> laptimes = this.getLapTimes();
+    for (Long item : laptimes){
+      lapStrBuilder.append(item.toString() + ", ");
+    }
+    int lapStrSize = laptimes.size();
+    if (lapStrSize > 0){
+      lapStrBuilder.delete(lapStrSize - 2, lapStrSize);
+    }
+    lapStrBuilder.append("]");
+    return "Stopwatch [id=" + id 
+        + ", laps=" + lapStrBuilder.toString() 
+        + ", isRunning=" + isRunning + "]";
+  }
+  
+
 }
