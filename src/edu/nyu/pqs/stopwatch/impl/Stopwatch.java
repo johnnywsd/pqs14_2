@@ -43,6 +43,15 @@ public class Stopwatch implements IStopwatch {
   public void start() throws IllegalStateException{
     if (! this.isRunning()){
       this.setRunning(true);
+
+      synchronized (this.laps) {
+        //It remove the last lap when resume.
+        if (!this.laps.isEmpty()){
+          int lapsSize = this.laps.size();
+          this.laps.remove(lapsSize - 1);
+        }
+      }
+
       Long laptime = Long.valueOf(System.currentTimeMillis());
       this.addLap(laptime);
     }else{
