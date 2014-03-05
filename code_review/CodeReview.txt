@@ -1,2 +1,8 @@
 Please enter your code review in this file as plain text
 and make sure to include it when you commit your project.
+
+#### AddressBook.java
+
+1. It has newInstance() method, but we still also create new instance by AddressBook addressBook = new AddressBook(). It should contain private constructor.
+
+2. 
