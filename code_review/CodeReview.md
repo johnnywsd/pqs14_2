@@ -38,7 +38,7 @@ Both of the two entries in addressbook will be change, Since addressbook has two
 
 1. LoggerWrapper is not a good idea. It use SimpleFormatter. The log will looks like this:
 
->    <date> <time> <Level>  <Logger_Name>:<#line> - <Message>
+>    <date> <time> <Level> <Logger_Name> : <#line> - <Message>
 
 Because all the class use the same LoggerWrapper, all log have the same <Logger_Name> which is "AddressBook". Then the #line become meaningless, since we cannot find which line of code print this log.
     
